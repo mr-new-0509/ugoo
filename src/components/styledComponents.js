@@ -7,18 +7,21 @@ import {
   Dialog
 } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import { COLOR_PRIMARY, COLOR_WHITE, FONT_FAMILY_SECONDARY } from "../utils/constants";
+import { COLOR_BLACK, COLOR_PRIMARY, COLOR_WHITE, FONT_FAMILY_SECONDARY } from "../utils/constants";
 
 export const PrimaryButton = styled(Button)`
   font-family: ${FONT_FAMILY_SECONDARY};
-  background-color: transparent;
-  background-image: linear-gradient(#FFCD00, #FF6C00);
-  color: ${COLOR_WHITE};
+  background-color: ${COLOR_PRIMARY};
+  color: ${COLOR_BLACK};
   text-transform: none;
   border-radius: 9999px;
+  :hover {
+    background-color: ${COLOR_PRIMARY};
+  }
 `;
 
 export const OutlineButton = styled(Button)`
+  text-transform: none;
   font-family: ${FONT_FAMILY_SECONDARY};
   background-color: #1d1d2d;
   border-radius: 9999px;
@@ -35,7 +38,8 @@ export const PrimaryLinearProgressbar = styled(LinearProgress)({
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 10,
-    background: 'linear-gradient(#ff6000, #ff1f01)',
+    // background: 'linear-gradient(#ff6000, #ff1f01)',
+    backgroundColor: COLOR_PRIMARY
   },
 });
 

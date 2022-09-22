@@ -221,15 +221,24 @@ export default function Home() {
         <Stack sx={{ minHeight: '94vh' }} justifyContent="center" alignItems="center" spacing={5}>
           {/* Title */}
           <Box>
+            <Stack direction="row" justifyContent="center">
+              <Box
+                component="img"
+                src="/assets/images/logo.png"
+                width={64}
+              />
+            </Stack>
             <Typography
               sx={{
                 fontSize: { xs: 36, md: 42 },
                 fontWeight: 900,
-                background: '-webkit-linear-gradient(#ff6000, #ff1f01)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                // background: '-webkit-linear-gradient(#ff6000, #ff1f01)',
+                // WebkitBackgroundClip: 'text',
+                // WebkitTextFillColor: 'transparent',
                 fontFamily: FONT_FAMILY_FREDOKA
               }}
+              color="#FFB800"
+              textAlign="center"
             >Private Pre-sale</Typography>
             <Typography
               sx={{
@@ -240,6 +249,17 @@ export default function Home() {
               }}
               textAlign="center"
             >Join Gooo. Move and earn.</Typography>
+            <Typography
+              sx={{
+                fontSize: { xs: FONT_SIZE_BODY1_MOBILE, md: FONT_SIZE_BODY1_DESKTOP },
+                color: COLOR_WHITE,
+                fontFamily: FONT_FAMILY_FREDOKA,
+                fontWeight: 100
+              }}
+              textAlign="center"
+            >
+              You have been invited to participate in the exclusive private pre-sale of UGoo Token.
+            </Typography>
           </Box>
 
           <Card
@@ -287,7 +307,7 @@ export default function Home() {
                       <OutlineButton
                         sx={{
                           fontSize: { xs: FONT_SIZE_BODY1_MOBILE, md: FONT_SIZE_BODY1_DESKTOP },
-                          fontWeight: 700
+                          fontWeight: 700,
                         }}
                         variant="contained"
                         onClick={() => connectWallet()}
@@ -335,7 +355,7 @@ export default function Home() {
                   <PrimaryLinearProgressbar
                     variant="determinate"
                     value={soldAmount >= 0 ? (soldAmount / HARD_CAP) * 100 : 0}
-                    // value={40}
+                  // value={40}
                   />
                 </Stack>
 
@@ -498,7 +518,7 @@ export default function Home() {
                                   fontSize={{ xs: FONT_SIZE_H5_MOBILE, md: FONT_SIZE_H5_DESKTOP }}
                                   fontFamily={FONT_FAMILY_SECONDARY}
                                   color="white"
-                                  fontWeight={700}
+                                  fontWeight={500}
                                 >{rate * Number(buyPrice)}</Typography>
                               </Grid>
                               <Grid item xs={4} md={4}>
