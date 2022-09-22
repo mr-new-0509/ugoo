@@ -224,8 +224,8 @@ export default function Home() {
             <Stack direction="row" justifyContent="center">
               <Box
                 component="img"
-                src="/assets/images/logo.png"
-                width={64}
+                src="/assets/images/logo-white.png"
+                sx={{ width: 84 }}
               />
             </Stack>
             <Typography
