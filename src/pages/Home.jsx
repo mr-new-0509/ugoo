@@ -225,7 +225,7 @@ export default function Home() {
               <Box
                 component="img"
                 src="/assets/images/logo-white.png"
-                sx={{ width: 84 }}
+                sx={{ width: 120 }}
               />
             </Stack>
             <Typography
@@ -360,7 +360,7 @@ export default function Home() {
                 </Stack>
 
                 <Box mt={4}>
-                  <Grid container spacing={24} alignItems="center">
+                  <Grid container spacing={{ xs: 4, sm: 16, md: 24 }} alignItems="center">
                     {/* Prices */}
                     <Grid item xs={12} md={6}>
                       <Stack

@@ -168,7 +168,7 @@ export const INIT_SOLD_AMOUNT = -1;
 export const INIT_BUSD_CONTRACT = null;
 export const INIT_BUY_PRICE = '0';
 
-export const HARD_CAP = 50000;
+export const HARD_CAP = 1000000;
 
 export const MESSAGE_WALLET_CONNECT_ERROR = 'Wallet connect error. Try again, please.';
 export const MESSAGE_SWITCH_NETWORK = 'Please switch the network to Binance Smart Chain.';
