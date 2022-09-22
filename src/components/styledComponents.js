@@ -11,23 +11,31 @@ import { COLOR_PRIMARY, COLOR_WHITE, FONT_FAMILY_SECONDARY } from "../utils/cons
 
 export const PrimaryButton = styled(Button)`
   font-family: ${FONT_FAMILY_SECONDARY};
-  background-color: ${COLOR_PRIMARY};
+  background-color: transparent;
+  background-image: linear-gradient(#FFCD00, #FF6C00);
   color: ${COLOR_WHITE};
   text-transform: none;
+  border-radius: 9999px;
+`;
+
+export const OutlineButton = styled(Button)`
+  font-family: ${FONT_FAMILY_SECONDARY};
+  background-color: #1d1d2d;
+  border-radius: 9999px;
   :hover {
-    background-color: ${COLOR_PRIMARY};
-  } 
+    background-color: #1d1d2d;
+  }
 `;
 
 export const PrimaryLinearProgressbar = styled(LinearProgress)({
   height: 20,
   borderRadius: 10,
   [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: grey[400],
+    backgroundColor: '#323252',
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 10,
-    backgroundColor: COLOR_PRIMARY,
+    background: 'linear-gradient(#ff6000, #ff1f01)',
   },
 });
 
@@ -43,7 +51,7 @@ export const ExchangeTextField = styled(TextField)({
     fontFamily: FONT_FAMILY_SECONDARY,
     fontWeight: 900,
     border: 'none',
-    borderRadius: 20,
+    borderRadius: 5,
     '& fieldset': {
     },
     '&:hover fieldset': {
@@ -57,8 +65,8 @@ export const ExchangeTextField = styled(TextField)({
     },
   },
   '& .MuiOutlinedInput-input': {
-    fontSize: 24,
-    padding: 10
+    fontSize: 20,
+    padding: 5
   },
   '& .MuiOutlinedInput-input::placeholder': {
     fontWeight: 900

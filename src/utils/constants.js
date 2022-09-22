@@ -11,7 +11,7 @@ export const FONT_SIZE_H6_MOBILE = 16;
 export const FONT_SIZE_BODY1_DESKTOP = 16;
 export const FONT_SIZE_BODY1_MOBILE = 12;
 
-export const COLOR_PRIMARY = '#00aa01';
+export const COLOR_PRIMARY = '#FF1F01';
 export const COLOR_PRIMARY_OPACITY = 'rgba(0, 170, 1, 0.2)';
 export const COLOR_WHITE = '#ffffff';
 export const COLOR_BLACK = '#000000';
@@ -157,7 +157,7 @@ export const WARNING = 'warning';
 export const ERROR = 'error';
 
 export const NAME_FROM_CRYPTO = 'BUSD';
-export const NAME_TO_CRYPTO = 'EVO';
+export const NAME_TO_CRYPTO = 'UGO';
 
 export const CODE_SWITCH_ERROR = 4902;
 

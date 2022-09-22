@@ -8,7 +8,8 @@ import {
   Stack,
   Typography,
   Grid,
-  Icon as MuiIcon
+  Icon as MuiIcon,
+  Divider
 } from '@mui/material';
 import { Icon } from '@iconify/react';
 import { ethers } from 'ethers';
@@ -54,6 +55,7 @@ import {
 } from '../utils/constants';
 import {
   ExchangeTextField,
+  OutlineButton,
   PrimaryButton,
   PrimaryLinearProgressbar
 } from '../components/styledComponents';
@@ -272,18 +274,28 @@ export default function Home() {
                       {currentAccount.slice(0, 10)}...{currentAccount.slice(-5)}
                     </PrimaryButton>
                   ) : (
-                    <PrimaryButton
+                    <Box
                       sx={{
-                        fontSize: { xs: FONT_SIZE_BODY1_MOBILE, md: FONT_SIZE_BODY1_DESKTOP },
-                        fontWeight: 700
+                        backgroundColor: 'transparent',
+                        backgroundImage: 'linear-gradient(#FFCD00, #FF6C00)',
                       }}
-                      variant="contained"
-                      onClick={() => connectWallet()}
+                      px={0.2}
+                      pt={0.1}
+                      pb={0.2}
+                      borderRadius={9999}
                     >
-                      Connect Wallet
-                    </PrimaryButton>
+                      <OutlineButton
+                        sx={{
+                          fontSize: { xs: FONT_SIZE_BODY1_MOBILE, md: FONT_SIZE_BODY1_DESKTOP },
+                          fontWeight: 700
+                        }}
+                        variant="contained"
+                        onClick={() => connectWallet()}
+                      >
+                        Connect Wallet
+                      </OutlineButton>
+                    </Box>
                   )
-
                 }
               />
               <CardContent
@@ -302,6 +314,7 @@ export default function Home() {
                       fontSize={{ xs: FONT_SIZE_BODY1_MOBILE, md: FONT_SIZE_H6_DESKTOP }}
                       fontFamily={FONT_FAMILY_SECONDARY}
                       fontWeight={900}
+                      color="white"
                     >
                       Sold:&nbsp;
                       {
@@ -309,93 +322,73 @@ export default function Home() {
                           `${thousandsSeparators(Number(soldAmount.toFixed(2)))} ${NAME_FROM_CRYPTO}`
                         )
                       }
-
                     </Typography>
                     <Typography
                       component="span"
                       fontSize={{ xs: FONT_SIZE_BODY1_MOBILE, md: FONT_SIZE_H6_DESKTOP }}
                       fontFamily={FONT_FAMILY_SECONDARY}
                       fontWeight={900}
+                      color="white"
                     >Hard Cap: {thousandsSeparators(HARD_CAP)} {NAME_FROM_CRYPTO}</Typography>
                   </Stack>
 
                   <PrimaryLinearProgressbar
                     variant="determinate"
                     value={soldAmount >= 0 ? (soldAmount / HARD_CAP) * 100 : 0}
+                    // value={40}
                   />
                 </Stack>
 
                 <Box mt={4}>
-                  <Grid container spacing={2} alignItems="stretch">
+                  <Grid container spacing={24} alignItems="center">
                     {/* Prices */}
                     <Grid item xs={12} md={6}>
                       <Stack
+                        py={3}
                         px={3}
                         justifyContent="center"
                         spacing={3}
-                        borderRadius="50px 0 50px 0"
-                        bgcolor={COLOR_PRIMARY_OPACITY}
+                        borderRadius={2}
+                        bgcolor="#323252"
                         sx={{ height: '100%' }}
                       >
                         <Stack direction="row" justifyContent="space-between" alignItems="center">
                           <Typography
                             component="span"
-                            fontSize={{ xs: FONT_SIZE_H5_MOBILE, md: FONT_SIZE_H5_DESKTOP }}
+                            fontSize={{ xs: FONT_SIZE_H6_MOBILE, md: FONT_SIZE_H6_DESKTOP }}
                             fontFamily={FONT_FAMILY_SECONDARY}
-                            color={COLOR_PRIMARY}
-                            fontWeight={900}
+                            fontWeight={700}
+                            color="white"
                           >Price: </Typography>
                           {
                             rate > 0 && (
                               <Typography
                                 component="span"
-                                fontSize={{ xs: FONT_SIZE_H5_MOBILE, md: FONT_SIZE_H5_DESKTOP }}
+                                fontSize={{ xs: FONT_SIZE_H6_MOBILE, md: FONT_SIZE_H6_DESKTOP }}
                                 fontFamily={FONT_FAMILY_SECONDARY}
                                 fontWeight={900}
+                                color="white"
                               >{1 / rate} {NAME_FROM_CRYPTO} / {NAME_TO_CRYPTO}</Typography>
                             )
                           }
+                        </Stack>
 
-                        </Stack>
-                        {/* <Stack direction="row" justifyContent="space-between" alignItems="center">
-                          <Typography
-                            component="span"
-                            fontSize={{ xs: FONT_SIZE_H5_MOBILE, md: FONT_SIZE_H5_DESKTOP }}
-                            fontFamily={FONT_FAMILY_SECONDARY}
-                            color={COLOR_PRIMARY}
-                            fontWeight={900}
-                          >Next Price: </Typography>
-                          <Typography
-                            component="span"
-                            fontSize={{ xs: FONT_SIZE_H5_MOBILE, md: FONT_SIZE_H5_DESKTOP }}
-                            fontFamily={FONT_FAMILY_SECONDARY}
-                            fontWeight={900}
-                          >0.0046 {NAME_FROM_CRYPTO} / {NAME_TO_CRYPTO}</Typography>
-                        </Stack>
                         <Stack direction="row" justifyContent="space-between" alignItems="center">
                           <Typography
                             component="span"
-                            fontSize={{ xs: FONT_SIZE_H5_MOBILE, md: FONT_SIZE_H5_DESKTOP }}
+                            fontSize={{ xs: FONT_SIZE_H6_MOBILE, md: FONT_SIZE_H6_DESKTOP }}
                             fontFamily={FONT_FAMILY_SECONDARY}
-                            color={COLOR_PRIMARY}
-                            fontWeight={900}
-                          >In 0d 0h 13m 57s </Typography>
-                        </Stack> */}
-                        <Stack direction="row" justifyContent="space-between" alignItems="center">
-                          <Typography
-                            component="span"
-                            fontSize={{ xs: FONT_SIZE_H5_MOBILE, md: FONT_SIZE_H5_DESKTOP }}
-                            fontFamily={FONT_FAMILY_SECONDARY}
-                            color={COLOR_PRIMARY}
-                            fontWeight={900}
+                            color="white"
+                            fontWeight={700}
                           >Min Buy: </Typography>
                           {
                             minBuyPrice >= 0 && (
                               <Typography
                                 component="span"
-                                fontSize={{ xs: FONT_SIZE_H5_MOBILE, md: FONT_SIZE_H5_DESKTOP }}
+                                fontSize={{ xs: FONT_SIZE_H6_MOBILE, md: FONT_SIZE_H6_DESKTOP }}
                                 fontFamily={FONT_FAMILY_SECONDARY}
                                 fontWeight={900}
+                                color="white"
                               >{minBuyPrice} {NAME_FROM_CRYPTO}</Typography>
                             )
                           }
@@ -403,18 +396,19 @@ export default function Home() {
                         <Stack direction="row" justifyContent="space-between" alignItems="center">
                           <Typography
                             component="span"
-                            fontSize={{ xs: FONT_SIZE_H5_MOBILE, md: FONT_SIZE_H5_DESKTOP }}
+                            fontSize={{ xs: FONT_SIZE_H6_MOBILE, md: FONT_SIZE_H6_DESKTOP }}
                             fontFamily={FONT_FAMILY_SECONDARY}
-                            color={COLOR_PRIMARY}
-                            fontWeight={900}
+                            color="white"
+                            fontWeight={700}
                           >Max Buy: </Typography>
                           {
                             maxBuyPrice >= 0 && (
                               <Typography
                                 component="span"
-                                fontSize={{ xs: FONT_SIZE_H5_MOBILE, md: FONT_SIZE_H5_DESKTOP }}
+                                fontSize={{ xs: FONT_SIZE_H6_MOBILE, md: FONT_SIZE_H6_DESKTOP }}
                                 fontFamily={FONT_FAMILY_SECONDARY}
                                 fontWeight={900}
+                                color="white"
                               >{thousandsSeparators(maxBuyPrice)} {NAME_FROM_CRYPTO}</Typography>
                             )
                           }
@@ -424,21 +418,25 @@ export default function Home() {
 
                     {/* Exchange */}
                     <Grid item xs={12} md={6}>
-                      <Stack sx={{ height: '100%' }} justifyContent="center" spacing={2}>
+                      <Stack
+                        sx={{ height: '100%' }}
+                        justifyContent="center"
+                        spacing={3}
+                        bgcolor="#323252"
+                        borderRadius={2}
+                        px={3}
+                        py={3}
+                      >
                         {/* From */}
                         <Stack
                           spacing={1}
-                          px={2}
-                          py={1}
-                          bgcolor={COLOR_PRIMARY_OPACITY}
-                          borderRadius="0 20px 0 20px"
                         >
                           <Typography
                             component="span"
                             fontSize={{ xs: FONT_SIZE_H6_MOBILE, md: FONT_SIZE_H6_DESKTOP }}
-                            color={COLOR_PRIMARY}
+                            color="white"
                             fontFamily={FONT_FAMILY_SECONDARY}
-                            fontWeight={900}
+                            fontWeight={700}
                           >From</Typography>
 
                           <Box>
@@ -449,6 +447,7 @@ export default function Home() {
                                   value={buyPrice}
                                   onChange={(e) => handleBuyPrice(e.target.value)}
                                   disabled={!currentAccount}
+                                  fullWidth
                                 />
                               </Grid>
                               <Grid item xs={4} md={4}>
@@ -467,7 +466,8 @@ export default function Home() {
                                   <Typography
                                     component="span"
                                     fontSize={{ xs: FONT_SIZE_H6_MOBILE, md: FONT_SIZE_H6_DESKTOP }}
-                                    fontWeight={900}
+                                    fontWeight={700}
+                                    color="white"
                                     fontFamily={FONT_FAMILY_SECONDARY}
                                   >{NAME_FROM_CRYPTO}</Typography>
                                 </Stack>
@@ -476,27 +476,18 @@ export default function Home() {
                           </Box>
                         </Stack>
 
-                        {/* Arrow */}
-                        <Stack direction="row" justifyContent="center">
-                          <MuiIcon sx={{ fontSize: { xs: 24, md: 38 }, color: COLOR_PRIMARY, height: 'auto' }}>
-                            <Icon icon="simple-icons:convertio" />
-                          </MuiIcon>
-                        </Stack>
+                        <Divider sx={{ bgcolor: 'white' }} />
 
                         {/* To */}
                         <Stack
                           spacing={1}
-                          px={2}
-                          py={1}
-                          bgcolor={COLOR_PRIMARY_OPACITY}
-                          borderRadius="0 20px 0 20px"
                         >
                           <Typography
                             component="span"
                             fontSize={{ xs: FONT_SIZE_H6_MOBILE, md: FONT_SIZE_H6_DESKTOP }}
-                            color={COLOR_PRIMARY}
+                            color="white"
                             fontFamily={FONT_FAMILY_SECONDARY}
-                            fontWeight={900}
+                            fontWeight={700}
                           >To</Typography>
 
                           <Box>
@@ -504,9 +495,10 @@ export default function Home() {
                               <Grid item xs={8} md={8}>
                                 <Typography
                                   component="span"
-                                  fontSize={{ xs: FONT_SIZE_H4_MOBILE, md: FONT_SIZE_H4_DESKTOP }}
+                                  fontSize={{ xs: FONT_SIZE_H5_MOBILE, md: FONT_SIZE_H5_DESKTOP }}
                                   fontFamily={FONT_FAMILY_SECONDARY}
-                                  fontWeight={900}
+                                  color="white"
+                                  fontWeight={700}
                                 >{rate * Number(buyPrice)}</Typography>
                               </Grid>
                               <Grid item xs={4} md={4}>
@@ -525,7 +517,8 @@ export default function Home() {
                                   <Typography
                                     component="span"
                                     fontSize={{ xs: FONT_SIZE_H6_MOBILE, md: FONT_SIZE_H6_DESKTOP }}
-                                    fontWeight={900}
+                                    fontWeight={700}
+                                    color="white"
                                     fontFamily={FONT_FAMILY_SECONDARY}
                                   >{NAME_TO_CRYPTO}</Typography>
                                 </Stack>
@@ -541,7 +534,7 @@ export default function Home() {
                 <Stack direction="row" justifyContent="center" mt={4}>
                   <PrimaryButton
                     sx={{
-                      fontSize: { xs: FONT_SIZE_H4_MOBILE, md: FONT_SIZE_H4_MOBILE },
+                      fontSize: { xs: FONT_SIZE_H5_MOBILE, md: FONT_SIZE_H5_MOBILE },
                       fontWeight: 900,
                       px: 6
                     }}
